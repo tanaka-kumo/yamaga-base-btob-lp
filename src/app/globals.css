@@ -1,0 +1,165 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-noto-sans-jp), var(--font-inter), system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+
+  --shadow-soft: var(--shadow-soft);
+  --shadow-lift: var(--shadow-lift);
+
+  /* === ボーダレス・モック トークン（これが正） === */
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-paper: var(--paper);
+  --color-arch-tint: var(--arch-tint);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-teal: var(--teal);
+  --color-teal-d: var(--teal-d);
+  --color-gold: var(--gold);
+  --color-gold-d: var(--gold-d);
+  --color-tan: var(--tan);
+  --color-green: var(--green);
+  --color-green-d: var(--green-d);
+  --color-panel: var(--panel);
+  --color-border-soft: var(--border-soft);
+  --shadow-card: var(--shadow-card);
+  --shadow-btn: var(--shadow-btn);
+  --radius-card: var(--radius-card);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+}
+
+:root {
+  /* === ボーダレス・モック :root（mockup/borderless-tonemanner-mock.html と一致・これが正） === */
+  --cream: #f6f1e6;
+  --cream-2: #efe8d6;
+  --paper: #ffffff;
+  --arch-tint: #e9edec;
+  --ink: #2e2c28;
+  --ink-soft: #595650;
+  --teal: #1f7a70;
+  --teal-d: #145e56;
+  --gold: #e3b24a;
+  --gold-d: #c9952f;
+  --tan: #b89150;
+  --green: #5bba82;
+  --green-d: #46a06c;
+  --panel: #2e2d2b;
+  --border-soft: #e7e0d0;
+  --radius-card: 20px;
+  --radius-pill: 9999px;
+  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-btn: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  /* === shadcn トークンをモック配色へマッピング（Button/Accordion/Sheet等が追従） === */
+  --radius: 1.25rem; /* 20px 相当 */
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --card: var(--paper);
+  --card-foreground: var(--ink);
+  --popover: var(--paper);
+  --popover-foreground: var(--ink);
+  --primary: var(--gold);
+  --primary-foreground: var(--ink);
+  --secondary: var(--cream-2);
+  --secondary-foreground: var(--ink-soft);
+  --muted: var(--cream-2);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--cream-2);
+  --accent-foreground: var(--ink-soft);
+  --destructive: oklch(0.577 0.245 27.3);
+  --border: var(--border-soft);
+  --input: var(--border-soft);
+  --ring: var(--gold);
+
+  /* SoftCard 用（shadcn ui/card） */
+  --shadow-soft: var(--shadow-card);
+  --shadow-lift: var(--shadow-btn);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* 日本語タイポ最適化 */
+  html {
+    font-feature-settings: "palt";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+  p, li, td, th, dd, dt {
+    word-break: auto-phrase;
+    overflow-wrap: anywhere;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.4;
+    letter-spacing: 0.01em;
+  }
+
+  /* スクロールバー非表示ユーティリティ（横スライダー用） */
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-none::-webkit-scrollbar { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+}
+
+/* ===== スクロール・フェードアップ（JS実行時のみ付与） ===== */
+.reveal-init { opacity: 0; transform: translateY(16px); }
+.reveal-init.reveal-in {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init, .reveal-init.reveal-in { opacity: 1; transform: none; transition: none; }
+}
+
+/* ===== ロゴマーキー（実績セクション・2段） ===== */
+.marquee-track { display: flex; gap: 14px; width: max-content; }
+.marquee-left { animation: yb-scrollL 26s linear infinite; }
+.marquee-right { animation: yb-scrollR 30s linear infinite; }
+@keyframes yb-scrollL { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes yb-scrollR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .marquee-left, .marquee-right { animation: none; }
+}

@@ -1,0 +1,13 @@
+/* YAMAGA BASE 法人向けLP — style.css
+   カラー・余白・フォントはここで一元管理（docs/04 参照）。
+   下記は暫定値。正式ブランドガイド入手後に更新すること（facts-and-figures.md【要確認】）。 */
+:root {
+  --color-base: #faf8f4;   /* オフホワイト（仮） */
+  --color-ink: #1f2630;    /* 主要文字（仮） */
+  --color-accent: #e0852f; /* 灯籠の灯り（仮アンバー） */
+  --color-sub: #3f6b5a;    /* 自然のグリーン（仮） */
+  --color-muted: #6b7280;  /* 補助テキスト */
+  --space: 1rem;
+  --maxw: 1080px;
+}
+/* TODO: 実装は prompts/build-lp-prompt.md と docs/03・04 に従って進める */

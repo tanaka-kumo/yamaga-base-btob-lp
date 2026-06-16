@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>YAMAGA BASE 法人向けLP｜トンマナ模倣モック（ボーダレス風）</title>
+<!--
+  ============================================================
+  見た目（トンマナ）の参考モック。
+  ・構成は structure-rough.html（SECTION 01〜12）に準拠。
+  ・トンマナは参考サイト（ボーダレスアカデミー）を模倣（色/角丸/フォントは 03_borderless-clone-spec.md と一致）。
+  ・ヒーロー：背景動画（./assets/hero-loop.mp4／ミュート自動再生・ループ）。poster は hero-poster.jpg。
+  ・写真は ./assets/img/ の実素材を配置。数値/料金/社名は {{要確認}}（創作しない）。
+  ============================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --cream:#F6F1E6; --cream-2:#EFE8D6; --paper:#FFFFFF; --arch-tint:#E9EDEC;
+    --ink:#2E2C28; --ink-soft:#595650;
+    --teal:#1F7A70; --teal-d:#145E56;
+    --gold:#E3B24A; --gold-d:#C9952F;
+    --tan:#B89150; --green:#5BBA82; --green-d:#46A06C;
+    --panel:#2E2D2B; --border-soft:#E7E0D0;
+    --radius-card:20px; --radius-pill:9999px;
+    --shadow-card:0 8px 24px rgba(0,0,0,.06);
+    --shadow-btn:0 4px 12px rgba(0,0,0,.10);
+    --maxw:430px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{background:#dcd6c6;font-family:"Noto Sans JP",system-ui,sans-serif;color:var(--ink);
+    -webkit-font-smoothing:antialiased;line-height:1.6;}
+  .page{max-width:var(--maxw);margin:0 auto;background:var(--cream);overflow:hidden;}
+  section{padding:46px 22px;}
+  .eyebrow{font-family:"Montserrat",sans-serif;font-weight:600;letter-spacing:.14em;color:var(--tan);font-size:12px;text-align:center;}
+  h2.section-title{font-weight:900;font-size:25px;line-height:1.45;letter-spacing:.02em;text-align:center;margin-top:8px;}
+  .lead{color:var(--ink-soft);font-size:14.5px;line-height:1.9;text-align:center;}
+  .sub-teal{color:var(--teal);font-weight:700;font-size:22px;line-height:1.6;text-align:center;}
+  .center{text-align:center;}
+  .mt24{margin-top:24px;}
+  .bg-paper{background:var(--paper);}
+  .bg-cream2{background:var(--cream-2);}
+  .ph{display:inline-block;background:#FBEFD7;color:var(--gold-d);border:1px dashed var(--gold);
+    border-radius:5px;padding:0 7px;font-size:11.5px;font-weight:700;white-space:nowrap;}
+
+  /* media frame */
+  .media{border-radius:var(--radius-card);overflow:hidden;box-shadow:var(--shadow-card);background:var(--arch-tint);}
+  .media img{display:block;width:100%;height:100%;object-fit:cover;}
+  .r16x9{aspect-ratio:16/9;} .r4x3{aspect-ratio:4/3;} .r1x1{aspect-ratio:1/1;} .r5x4{aspect-ratio:5/4;}
+
+  /* ボタン */
+  .btn{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:54px;
+    padding:15px 22px;border-radius:var(--radius-pill);font-weight:700;font-size:16px;text-decoration:none;
+    box-shadow:var(--shadow-btn);border:none;cursor:pointer;}
+  .btn-gold{background:var(--gold);color:var(--ink);}
+  .btn-gold:hover{background:var(--gold-d);}
+  .btn-white{background:var(--paper);color:var(--ink);border:1px solid var(--border-soft);}
+  .btn-green{background:var(--green);color:#fff;justify-content:center;}
+  .btn-green:hover{background:var(--green-d);}
+  .btn-sm{min-height:48px;font-size:15px;width:auto;display:inline-flex;}
+
+  /* ---------- HERO（背景動画） ---------- */
+  .hero{padding:0;position:relative;}
+  .hero-media{position:relative;width:100%;aspect-ratio:3/3.4;overflow:hidden;background:#1c1b19;}
+  .hero-media video{width:100%;height:100%;object-fit:cover;display:block;}
+  .hero-media::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(178deg,rgba(28,27,25,.30) 0%,rgba(246,241,230,0) 40%,rgba(246,241,230,.78) 76%,var(--cream) 100%);}
+  .hero-kicker{position:absolute;top:20px;left:22px;z-index:2;font-family:"Montserrat",sans-serif;
+    font-weight:600;letter-spacing:.12em;font-size:11px;color:#fff;background:rgba(0,0,0,.28);
+    padding:6px 12px;border-radius:var(--radius-pill);backdrop-filter:blur(2px);}
+  .hero-by{position:absolute;top:18px;right:20px;z-index:2;font-family:"Montserrat",sans-serif;font-weight:800;color:#fff;font-size:20px;letter-spacing:.04em;}
+  .hero-head{position:absolute;left:22px;right:22px;bottom:24px;z-index:2;}
+  .hero-head h1{font-weight:900;font-size:30px;line-height:1.4;letter-spacing:.01em;color:var(--ink);}
+  .hero-copy{background:var(--cream);padding:22px 22px 4px;}
+
+  /* ---------- 導入企業ロゴ（2段マーキー） ---------- */
+  .clients{overflow:hidden;}
+  .clients .cap{text-align:center;font-size:12.5px;color:var(--ink-soft);font-weight:700;margin:6px 0 16px;letter-spacing:.04em;}
+  .marquee{overflow:hidden;}
+  .m-track{display:flex;gap:14px;width:max-content;}
+  .m-track.left{animation:scrollL 26s linear infinite;}
+  .m-track.right{animation:scrollR 30s linear infinite;margin-top:14px;}
+  @keyframes scrollL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes scrollR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+  .logo-chip{flex:0 0 auto;width:116px;height:54px;background:var(--paper);border:1px solid var(--border-soft);
+    border-radius:12px;display:grid;place-items:center;color:#b3ad9e;font-family:"Montserrat",sans-serif;
+    font-weight:700;font-size:12px;letter-spacing:.06em;box-shadow:var(--shadow-card);}
+  .clients .note{text-align:center;font-size:11px;color:#a39c8c;margin-top:14px;}
+  @media (prefers-reduced-motion: reduce){.m-track.left,.m-track.right{animation:none}}
+
+  /* ---------- 共感（issue） ---------- */
+  .issue-list{display:flex;flex-direction:column;gap:12px;margin-top:24px;}
+  .issue{display:flex;align-items:flex-start;gap:14px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow-card);padding:18px 20px;}
+  .issue .q{flex:0 0 auto;width:36px;height:36px;border-radius:50%;background:var(--cream-2);color:var(--teal);
+    font-family:"Montserrat",sans-serif;font-weight:800;font-style:italic;display:grid;place-items:center;font-size:15px;margin-top:1px;}
+  .issue p{font-size:14px;line-height:1.7;color:var(--ink-soft);}
+
+  /* ---------- サービスカード（全体像） ---------- */
+  .svc{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
+  .svc-card{display:flex;gap:16px;align-items:flex-start;background:var(--paper);border-radius:18px;box-shadow:var(--shadow-card);padding:20px;}
+  .svc-card.lead{border:2px solid var(--gold);}
+  .svc-ic{flex:0 0 auto;width:52px;height:52px;border-radius:14px;background:#E7F1EE;display:grid;place-items:center;}
+  .svc-card .lbl{font-family:"Montserrat",sans-serif;font-weight:700;letter-spacing:.06em;color:var(--tan);font-size:11px;}
+  .svc-card h3{font-size:16.5px;font-weight:700;margin:2px 0 4px;}
+  .svc-card p{font-size:13px;color:var(--ink-soft);line-height:1.7;}
+
+  /* ---------- 価値（主役研修の強み） ---------- */
+  .values{display:flex;flex-direction:column;gap:12px;margin-top:22px;}
+  .value{display:flex;gap:14px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow-card);padding:18px 20px;}
+  .value .ck{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--gold);display:grid;place-items:center;margin-top:2px;}
+  .value b{display:block;font-size:14.5px;margin-bottom:3px;}
+  .value span{font-size:13px;color:var(--ink-soft);line-height:1.7;}
+
+  /* ---------- 円形プログラムバッジ ---------- */
+  .prog-badge{width:96px;height:96px;border-radius:50%;border:2px solid var(--gold);background:var(--paper);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;margin:18px auto 6px;}
+  .prog-badge .t{font-size:10px;color:var(--tan);font-weight:700;line-height:1.35;text-align:center;}
+  .prog-badge .ic{color:var(--gold);margin-top:4px;}
+  .prog-dots{text-align:center;color:var(--gold);letter-spacing:4px;font-size:9px;margin-bottom:10px;}
+
+  /* ---------- FitBox（こんな方へおすすめ） ---------- */
+  .fitbox{background:var(--paper);border:2px solid var(--gold);border-radius:16px;padding:30px 18px 20px;position:relative;margin-top:30px;}
+  .fitbox .tab{position:absolute;top:-17px;left:50%;transform:translateX(-50%);background:var(--panel);color:#fff;
+    font-weight:700;font-size:14px;padding:8px 22px;border-radius:var(--radius-pill);display:flex;align-items:center;gap:8px;white-space:nowrap;}
+  .fit-row{display:flex;align-items:flex-start;gap:10px;background:#F4F1EA;border-radius:12px;padding:12px 14px;margin-top:12px;}
+  .fit-ck{flex:0 0 auto;width:22px;height:22px;border-radius:50%;background:var(--green);display:grid;place-items:center;margin-top:1px;}
+  .fit-row span{font-size:13.5px;font-weight:500;line-height:1.6;}
+
+  /* ---------- POINT / FEATURE カード ---------- */
+  .feat-grid{display:flex;flex-direction:column;gap:18px;margin-top:24px;}
+  .feat-card{background:var(--paper);border-radius:var(--radius-card);box-shadow:var(--shadow-card);padding:30px 22px 24px;position:relative;}
+  .feat-card::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:56px;height:8px;background:var(--gold);border-radius:0 0 8px 8px;}
+  .feat-card .head{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+  .point-badge{width:58px;height:58px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;
+    font-family:"Montserrat",sans-serif;font-weight:800;font-size:12px;letter-spacing:.04em;flex:0 0 auto;}
+  .feat-num{display:flex;flex-direction:column;line-height:1;}
+  .feat-num .lab{font-family:"Montserrat",sans-serif;font-weight:700;letter-spacing:.12em;color:var(--tan);font-size:12px;}
+  .feat-num .n{font-family:"Montserrat",sans-serif;font-style:italic;font-weight:800;font-size:50px;line-height:.9;}
+  .feat-num .n.teal{color:var(--teal);} .feat-num .n.gold{color:var(--gold);}
+  .feat-card h3{font-weight:700;font-size:17px;line-height:1.5;}
+  .feat-card p{color:var(--ink-soft);font-size:13.5px;line-height:1.8;margin-top:8px;}
+
+  /* ---------- 共感：チャット吹き出し ---------- */
+  .chat-list{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
+  .chat{display:flex;align-items:stretch;gap:8px;}
+  .chat .avatar{flex:0 0 auto;width:92px;display:flex;align-items:center;justify-content:center;}
+  .chat .avatar img{width:100%;height:100%;object-fit:contain;display:block;}
+  .chat .bubble{position:relative;background:var(--paper);box-shadow:var(--shadow-card);
+    border-radius:16px 16px 16px 4px;padding:13px 16px;font-size:13.5px;line-height:1.7;color:var(--ink-soft);}
+  .chat .bubble::before{content:"";position:absolute;left:-7px;bottom:6px;width:0;height:0;
+    border:7px solid transparent;border-right-color:var(--paper);border-left:0;}
+  .chat .cno{font-family:"Montserrat",sans-serif;font-style:italic;font-weight:800;color:var(--tan);margin-right:7px;font-size:13px;}
+
+  /* ---------- 事業カード（ビジネスイラスト） ---------- */
+  .biz-band{margin-top:18px;background:var(--paper);border-radius:var(--radius-card);box-shadow:var(--shadow-card);padding:18px 12px 12px;}
+  .biz-grid{display:flex;flex-direction:column;gap:18px;margin-top:24px;}
+  .biz-card{background:var(--paper);border-radius:20px;box-shadow:var(--shadow-card);overflow:hidden;}
+  .biz-card.lead{border:2px solid var(--gold);}
+  .biz-media{width:100%;aspect-ratio:16/10;display:grid;place-items:center;padding:10px;}
+  .biz-media img{width:100%;height:100%;object-fit:contain;display:block;}
+  .biz-body{padding:18px 20px 20px;}
+  .biz-body .lbl{display:inline-block;font-weight:700;font-size:11.5px;color:#fff;padding:3px 12px;border-radius:var(--radius-pill);}
+  .biz-body h3{font-size:20px;font-weight:900;letter-spacing:.01em;margin:8px 0 6px;line-height:1.35;}
+  .biz-body p{font-size:13.5px;color:var(--ink-soft);line-height:1.75;}
+  .t-teal .biz-media{background:#E2F0EC;} .t-teal .lbl{background:var(--teal);} .t-teal h3{color:var(--teal-d);}
+  .t-gold .biz-media{background:#FBEFD7;} .t-gold .lbl{background:var(--gold-d);} .t-gold h3{color:var(--gold-d);}
+  .t-green .biz-media{background:#E6F2E9;} .t-green .lbl{background:var(--green-d);} .t-green h3{color:var(--green-d);}
+  .spot{display:block;margin:18px auto 0;max-width:300px;}
+  .spot img{width:100%;height:auto;display:block;}
+
+  /* ---------- 2カラム（新規/地方創生・学びの場） ---------- */
+  .duo{display:flex;flex-direction:column;gap:18px;margin-top:24px;}
+  .duo-card{background:var(--paper);border-radius:var(--radius-card);box-shadow:var(--shadow-card);overflow:hidden;}
+  .duo-card.lead{border:2px solid var(--gold);}
+  .duo-card .body{padding:20px;}
+  .duo-card .lbl{display:inline-block;font-weight:700;font-size:12.5px;color:#fff;background:var(--teal);padding:4px 14px;border-radius:var(--radius-pill);}
+  .duo-card.lead .lbl{background:var(--gold);color:var(--ink);}
+  .duo-card h3{font-size:17px;font-weight:700;margin:10px 0 6px;}
+  .duo-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.8;}
+  .duo-card .small{font-size:12px;color:#9a9384;margin-top:8px;}
+
+  /* ---------- 講師 ---------- */
+  .teacher{background:var(--paper);border-radius:var(--radius-card);box-shadow:var(--shadow-card);overflow:hidden;margin-top:24px;}
+  .teacher .body{padding:20px;}
+  .teacher .lbl{font-family:"Montserrat",sans-serif;font-weight:700;letter-spacing:.06em;color:var(--tan);font-size:11px;}
+  .teacher h3{font-size:18px;font-weight:700;margin:4px 0 2px;}
+  .teacher .role{font-size:12.5px;color:var(--teal);font-weight:700;margin-bottom:8px;}
+  .teacher p{font-size:13.5px;color:var(--ink-soft);line-height:1.8;}
+
+  /* ---------- 濃色CTAパネル ---------- */
+  .cta-panel{background:var(--panel);color:#fff;border-radius:var(--radius-card);padding:24px 20px;}
+  .cta-panel .toplabel{font-size:12px;color:rgba(255,255,255,.72);padding-bottom:12px;border-bottom:1px solid rgba(255,255,255,.16);margin-bottom:16px;}
+  .cta-panel h3{font-weight:900;font-size:26px;line-height:1.35;}
+  .cta-panel h3 .free{display:inline-block;vertical-align:middle;background:var(--gold);color:var(--ink);font-size:13px;font-weight:700;padding:3px 10px;border-radius:var(--radius-pill);margin-left:8px;}
+  .cta-panel .cap{font-size:13.5px;color:rgba(255,255,255,.82);line-height:1.8;}
+  .cta-panel .btns{display:flex;flex-direction:column;gap:12px;margin-top:18px;}
+  .cta-panel .line-sub{border-top:1px solid rgba(255,255,255,.16);margin-top:18px;padding-top:16px;}
+  .cta-panel .line-sub p{font-size:13px;color:rgba(255,255,255,.82);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+  .line-ic{width:26px;height:26px;border-radius:7px;background:var(--green);display:grid;place-items:center;color:#fff;font-size:10px;font-weight:800;flex:0 0 auto;}
+  .cta-panel .note{font-size:11px;color:rgba(255,255,255,.55);margin-top:14px;line-height:1.6;}
+
+  /* ---------- 実績動画 ---------- */
+  .video{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--radius-card);overflow:hidden;box-shadow:var(--shadow-card);margin-top:20px;background:#000;}
+  .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
+
+  /* ---------- プロセス ---------- */
+  .steps{display:flex;flex-direction:column;gap:10px;margin-top:24px;}
+  .step{display:flex;align-items:center;gap:14px;background:var(--paper);border-radius:16px;box-shadow:var(--shadow-card);padding:16px 18px;}
+  .step .no{font-family:"Montserrat",sans-serif;font-style:italic;font-weight:800;color:var(--gold);font-size:24px;width:34px;text-align:center;flex:0 0 auto;}
+  .step .t{font-weight:700;font-size:15px;}
+
+  /* ---------- FAQ ---------- */
+  .faq-list{margin-top:22px;}
+  .faq{background:var(--paper);border-radius:14px;box-shadow:var(--shadow-card);margin-top:10px;overflow:hidden;}
+  .faq summary{list-style:none;cursor:pointer;padding:16px 18px;font-weight:700;font-size:14px;display:flex;gap:10px;align-items:flex-start;}
+  .faq summary::-webkit-details-marker{display:none;}
+  .faq summary .qm{color:var(--gold-d);font-family:"Montserrat",sans-serif;font-weight:800;flex:0 0 auto;}
+  .faq .a{padding:0 18px 16px 40px;font-size:13px;color:var(--ink-soft);line-height:1.8;}
+
+  /* ---------- フッター ---------- */
+  footer{background:var(--panel);color:rgba(255,255,255,.85);padding:40px 22px;text-align:center;}
+  footer .by{font-family:"Montserrat",sans-serif;font-weight:800;font-size:30px;letter-spacing:.04em;color:#fff;}
+  footer .tag{font-size:12.5px;color:rgba(255,255,255,.7);margin-top:10px;line-height:1.8;}
+  footer a{color:rgba(255,255,255,.85);}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ========== SECTION 01：HERO（背景動画） ========== -->
+  <header class="hero">
+    <div class="hero-media">
+      <!-- 背景動画：ミュート・自動再生・ループ・インライン。未配置時は poster 表示 -->
+      <video autoplay muted loop playsinline preload="auto" poster="./assets/hero-poster.jpg">
+        <source src="./assets/hero-loop.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-kicker">YAMAGA BASE ｜ 法人向け 経営研修・事業開発</div>
+      <div class="hero-by">bY</div>
+      <div class="hero-head">
+        <h1>世界水準の経営学を、<br />自社のチームに。</h1>
+      </div>
+    </div>
+    <div class="hero-copy">
+      <p class="sub-teal">日常を、いったん降りる。<br />経営を、本気で考えるために。</p>
+      <p class="lead" style="margin-top:16px;">
+        世界トップのビジネススクールで体系化された経営知を、熊本・山鹿の「廃校×秘密基地」で、近くカジュアルに。
+        研修で終わらせず、実装・新規事業・地域での挑戦まで、私たちが継続して伴走します。
+      </p>
+    </div>
+  </header>
+
+  <!-- ========== SECTION 02：共感 ========== -->
+  <section class="bg-cream2">
+    <p class="eyebrow">YOUR ISSUES</p>
+    <h2 class="section-title">その学び、半年後も<br />会社に残っていますか。</h2>
+    <p class="lead mt24">研修はやった。でも現場は変わらない——<br />そんな経験はありませんか。</p>
+    <div class="chat-list">
+      <div class="chat">
+        <div class="avatar"><img src="./assets/LP用画像/1.png" loading="lazy" alt="悩む経営者のイラスト" /></div>
+        <div class="bubble"><span class="cno">01</span>幹部・後継者を育てたいが、経営を体系的に学べる場が県内に乏しい。</div>
+      </div>
+      <div class="chat">
+        <div class="avatar"><img src="./assets/LP用画像/2.png" loading="lazy" alt="悩む経営者のイラスト" /></div>
+        <div class="bubble"><span class="cno">02</span>戦略を腰を据えて考え抜く時間と、壁打ち相手がいない。</div>
+      </div>
+      <div class="chat">
+        <div class="avatar"><img src="./assets/LP用画像/3.png" loading="lazy" alt="悩む経営者のイラスト" /></div>
+        <div class="bubble"><span class="cno">03</span>新しい事業を生みたいが、社内に0→1を伴走できる知見がない。</div>
+      </div>
+      <div class="chat">
+        <div class="avatar"><img src="./assets/LP用画像/4.png" loading="lazy" alt="悩む経営者のイラスト" /></div>
+        <div class="bubble"><span class="cno">04</span>研修は単発で終わり、学びが実務にも継続にもつながらない。</div>
+      </div>
+    </div>
+    <p class="sub-teal" style="margin-top:28px;">「学んで終わり」から、<br />「学んで動き出す」へ。</p>
+  </section>
+
+  <!-- ========== SECTION 03：全体像 ========== -->
+  <section class="bg-paper">
+    <p class="eyebrow">WHAT WE DO</p>
+    <h2 class="section-title">研修から、事業開発まで。<br />一気通貫で伴走します。</h2>
+    <!-- 一気通貫イメージ（イラスト5） -->
+    <div class="spot"><img src="./assets/LP用画像/5.png" loading="lazy" alt="チームで議論する経営の現場イラスト" /></div>
+
+    <!-- 研修→事業開発の流れ（ビジネスイラスト帯） -->
+    <div class="biz-band">
+      <svg viewBox="0 0 360 110" width="100%" role="img" aria-label="研修から事業開発までの一気通貫の流れ">
+        <path d="M46 48 H322" stroke="var(--gold)" stroke-width="2" stroke-dasharray="2 6" stroke-linecap="round"/>
+        <path d="M318 42 l8 6 -8 6" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- 1 研修 -->
+        <g transform="translate(46,48)"><circle r="25" fill="#E2F0EC"/>
+          <g transform="translate(0,-1)" fill="none" stroke="var(--teal)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M-12 -3 L0 -9 L12 -3 L0 3 Z"/><path d="M-7 0 V6 a7 3.5 0 0 0 14 0 V0"/><path d="M12 -3 V7"/></g></g>
+        <text x="46" y="88" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink-soft)" font-family="'Noto Sans JP',sans-serif">研修</text>
+        <!-- 2 戦略 -->
+        <g transform="translate(138,48)"><circle r="25" fill="#E2F0EC"/>
+          <g stroke="var(--teal)" stroke-width="2.6" stroke-linecap="round"><path d="M-9 8 V1"/><path d="M-1 8 V-4"/><path d="M7 8 V-9"/></g></g>
+        <text x="138" y="88" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink-soft)" font-family="'Noto Sans JP',sans-serif">戦略</text>
+        <!-- 3 新規事業 -->
+        <g transform="translate(230,48)"><circle r="25" fill="#FBEFD7"/>
+          <g fill="none" stroke="var(--gold-d)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M0 -11 C6 -5 6 4 0 10 C-6 4 -6 -5 0 -11 Z"/><circle cx="0" cy="-3" r="2.4"/><path d="M-5 6 L-9 11 M5 6 L9 11"/></g></g>
+        <text x="230" y="88" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink-soft)" font-family="'Noto Sans JP',sans-serif">新規事業</text>
+        <!-- 4 地域 -->
+        <g transform="translate(322,48)"><circle r="25" fill="#E6F2E9"/>
+          <g fill="none" stroke="var(--green-d)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="-11" y="-8" width="12" height="18"/><path d="M-8 -4 H-2 M-8 0 H-2 M-8 4 H-2"/><path d="M4 10 V-1 l5 -3 5 3 V10"/></g></g>
+        <text x="322" y="88" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink-soft)" font-family="'Noto Sans JP',sans-serif">地域</text>
+      </svg>
+    </div>
+
+    <div class="biz-grid">
+      <div class="biz-card lead t-teal">
+        <div class="biz-media"><img src="./assets/LP用画像/6.png" loading="lazy" alt="経営研修のイラスト" /></div>
+        <div class="biz-body"><span class="lbl">① 主役</span><h3>経営研修（MBAエッセンス）</h3><p>世界水準の経営知を、自社向けにカスタマイズして。</p></div>
+      </div>
+      <div class="biz-card t-gold">
+        <div class="biz-media"><img src="./assets/LP用画像/7.png" loading="lazy" alt="新規事業開発のイラスト" /></div>
+        <div class="biz-body"><span class="lbl">②</span><h3>新規事業開発支援</h3><p>0→1の構想から検証・立ち上げまで、伴走型で。</p></div>
+      </div>
+      <div class="biz-card t-green">
+        <div class="biz-media"><img src="./assets/LP用画像/8.png" loading="lazy" alt="地方創生事業のイラスト" /></div>
+        <div class="biz-body"><span class="lbl">③</span><h3>地方創生事業支援</h3><p>地域の資源を事業に。挑戦を、地域から。</p></div>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:18px;font-size:13px;">
+      経営戦略・マーケティング・資金調達・新規事業・AI活用・食農・地方創生まで。「社内に聞ける人がいない」領域も、まとめて相談できます。
+    </p>
+  </section>
+
+  <!-- ========== SECTION 04：実績（ロゴ＋実績動画） ========== -->
+  <section>
+    <p class="eyebrow">OUR CLIENTS</p>
+    <h2 class="section-title">これまで、ご一緒して<br />きた企業様。</h2>
+    <div class="clients" style="margin-top:24px;">
+      <div class="marquee">
+        <div class="m-track left">
+          <div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div>
+          <div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div>
+        </div>
+        <div class="m-track right">
+          <div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div>
+          <div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div><div class="logo-chip">LOGO</div>
+        </div>
+      </div>
+      <p class="note">※ 掲載は許諾をいただいた企業様のみ <span class="ph">要確認：許諾企業リスト・ロゴデータ</span></p>
+    </div>
+
+    <p class="eyebrow" style="margin-top:42px;">CASE MOVIE</p>
+    <h2 class="section-title">取り組みを、<br />動画でご覧ください。</h2>
+    <div class="video">
+      <iframe src="https://www.youtube.com/embed/Bth_DS0HAS0" title="YAMAGA BASE 実績動画" loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 05：CTA（無料オンライン個別相談・メイン） ========== -->
+  <section>
+    <div class="cta-panel">
+      <div class="toplabel">御社に合うか、まず話してみる</div>
+      <h3>無料オンライン<br />個別相談<span class="free">無料</span></h3>
+      <p class="cap" style="margin-top:12px;">説明会の日程を待たず、御社の課題に合わせて1対1で。オンラインで気軽にご相談いただけます。</p>
+      <div class="btns">
+        <a class="btn btn-gold" href="#">オンライン相談を予約する
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
+      </div>
+      <p class="note">※ お問い合わせ窓口は準備中のため、現在は既存サイトの問い合わせ先へご案内します。</p>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 06：主役：経営研修 ========== -->
+  <section class="bg-paper">
+    <p class="eyebrow">Management Training</p>
+    <h2 class="section-title">経営研修｜世界水準の<br />経営学を、カジュアルに。</h2>
+    <div class="media r16x9" style="margin-top:22px;">
+      <img src="./assets/img/_DSC1968.jpg" loading="lazy" alt="世界各都市の時計が並ぶ YAMAGA BASE の壁面" />
+    </div>
+    <p class="lead mt24">代表・中原功寛（ハーバードMBA）が設計する、実務直結の経営研修。御社の課題に合わせてカスタマイズし、フレーム→試作→改善まで「使える」状態にします。</p>
+
+    <!-- こんな方へおすすめ（FitBox） -->
+    <div class="fitbox">
+      <div class="tab">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+        こんな企業様へおすすめ
+      </div>
+      <div class="fit-row">
+        <span class="fit-ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span>幹部・後継者に、体系的な経営知を身につけさせたい</span>
+      </div>
+      <div class="fit-row">
+        <span class="fit-ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span>研修を「学んで終わり」にせず、実務・新規事業まで繋げたい</span>
+      </div>
+      <div class="fit-row">
+        <span class="fit-ck"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+        <span>戦略・資金調達・AI活用など、社内に相談できる人がいない領域を任せたい</span>
+      </div>
+    </div>
+
+    <!-- 4つの特徴（POINT / FEATURE カード） -->
+    <p class="eyebrow" style="margin-top:46px;">FEATURES</p>
+    <h2 class="section-title">経営研修｜4つの特徴。</h2>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="head">
+          <div class="point-badge">POINT</div>
+          <div class="feat-num"><span class="lab">FEATURE</span><span class="n gold">01</span></div>
+        </div>
+        <h3>世界水準を、カジュアルに。</h3>
+        <p>世界トップMBAで学ぶ経営知のエッセンスを、近場で・無理なく。御社の課題に合わせて編成します。<span class="ph">要確認：金額の最終表現</span></p>
+      </div>
+      <div class="feat-card">
+        <div class="head">
+          <div class="point-badge">POINT</div>
+          <div class="feat-num"><span class="lab">FEATURE</span><span class="n teal">02</span></div>
+        </div>
+        <h3>心理的安全性が高い。</h3>
+        <p>「浅いと思われないか」——その心配はいりません。本音で問える場が、思考を深くします。</p>
+      </div>
+      <div class="feat-card">
+        <div class="head">
+          <div class="point-badge">POINT</div>
+          <div class="feat-num"><span class="lab">FEATURE</span><span class="n teal">03</span></div>
+        </div>
+        <h3>何でも相談できる幅。</h3>
+        <p>戦略・マーケ・資金調達・新規事業・AI活用・食農まで。研修の中身そのものをカスタマイズします。</p>
+      </div>
+      <div class="feat-card">
+        <div class="head">
+          <div class="point-badge">POINT</div>
+          <div class="feat-num"><span class="lab">FEATURE</span><span class="n gold">04</span></div>
+        </div>
+        <h3>研修で終わらせない。</h3>
+        <p>研修後もフォローアップ・コンサルで伴走。学びが「成果が出る」まで並走します。</p>
+      </div>
+    </div>
+
+    <p class="lead" style="margin-top:18px;font-size:12.5px;">対象：経営者／幹部／後継者育成　｜　費用：内容・規模に応じてお見積り <span class="ph">要確認：研修の正式名称・料金</span></p>
+    <div style="text-align:center;margin-top:18px;"><a class="btn btn-gold btn-sm" href="#">研修を相談する
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg></a></div>
+  </section>
+
+  <!-- ========== SECTION 07：継続コンサル ========== -->
+  <section>
+    <p class="eyebrow">Follow-up</p>
+    <h2 class="section-title">研修の、その先まで。</h2>
+    <div class="media r16x9" style="margin-top:22px;">
+      <img src="./assets/img/_DSC1999.jpg" loading="lazy" alt="bY ツリーの壁面と灯りのある YAMAGA BASE の空間" />
+    </div>
+    <p class="lead mt24">多くの研修は、終わった瞬間に止まります。私たちは違います。学んだフレームを自社の現場に落とし込み、試し、改善する——その過程を継続コンサルティングで伴走。<br />学びが「知っている」で終わらず、<b style="color:var(--ink)">「成果が出る」まで並走</b>します。</p>
+    <p class="lead" style="margin-top:10px;font-size:12.5px;"><span class="ph">要確認：継続コンサルの形態・契約単位・料金</span></p>
+  </section>
+
+  <!-- ========== SECTION 08：新規事業／地方創生 ========== -->
+  <section class="bg-cream2">
+    <p class="eyebrow">New Business</p>
+    <h2 class="section-title">学びを、挑戦に変える。</h2>
+    <div class="biz-grid">
+      <div class="biz-card t-gold">
+        <div class="biz-media"><img src="./assets/LP用画像/9.png" loading="lazy" alt="インキュベーションのイラスト" /></div>
+        <div class="biz-body"><span class="lbl">新規事業開発支援</span><h3>インキュベーション</h3><p>構想・検証・立ち上げを伴走。資金調達やマーケティングの知見も含めて。</p></div>
+      </div>
+      <div class="biz-card t-green">
+        <div class="biz-media"><img src="./assets/LP用画像/10.png" loading="lazy" alt="地域から挑戦をのイラスト" /></div>
+        <div class="biz-body"><span class="lbl">地方創生事業支援</span><h3>地域から挑戦を</h3><p>地域の資源・課題を事業へ。食農・地域発信などの実践知をもとに後押し。</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 09：学びの場（2軸） ========== -->
+  <section class="bg-paper">
+    <p class="eyebrow">Two Ways</p>
+    <h2 class="section-title">学びの場は、選べます。</h2>
+    <div class="duo">
+      <div class="duo-card lead">
+        <div class="media r16x9"><img src="./assets/img/_DSC1943.jpg" loading="lazy" alt="廃校を活用した YAMAGA BASE のコワーキング空間" /></div>
+        <div class="body">
+          <span class="lbl">① YAMAGA BASE で（合宿型）</span>
+          <h3>廃校という、大人の秘密基地</h3>
+          <p>熊本県山鹿市の廃校をまるごと。日常を離れ、チームで考え抜く1〜2泊。校舎・体育館・宿泊・食まで同一敷地、移動ゼロで。</p>
+          <p class="small">植木ICから約10分／空港から約40分／新幹線新玉名駅から約25分</p>
+        </div>
+      </div>
+      <div class="duo-card">
+        <div class="media r16x9"><img src="./assets/LP用画像/都会のオフィスビル.png" loading="lazy" alt="都会のオフィスビル" /></div>
+        <div class="body">
+          <span class="lbl">② 御社へ伺います（出張・オンライン）</span>
+          <h3>場所を問わず、同じ品質で</h3>
+          <p>御社の拠点でも、オンラインでも。場所を問わず、同じ品質の学びを。県外・多忙な企業にも。</p>
+        </div>
+      </div>
+    </div>
+    <p class="sub-teal" style="margin-top:24px;font-size:18px;">施設を使うかどうかは、御社の目的しだい。<br />研修の価値は、場所に縛られません。</p>
+  </section>
+
+  <!-- ========== SECTION 10：講師・体制 ========== -->
+  <section class="bg-cream2">
+    <p class="eyebrow">Instructor</p>
+    <h2 class="section-title">世界水準の経営を、<br />地元から。</h2>
+    <div class="teacher">
+      <div class="media r5x4"><img src="./assets/img/_DSC1526.jpg" loading="lazy" alt="やまがBASE株式会社 代表 中原功寛" /></div>
+      <div class="body">
+        <span class="lbl">INSTRUCTOR</span>
+        <h3>中原 功寛（なかはら・かつもと）</h3>
+        <p class="role">やまがBASE株式会社 代表</p>
+        <p>山鹿市出身・旧千田小卒。米国大学を首席・早期卒業し、2018年ハーバード・ビジネス・スクールでMBA取得。地域×経営の現場で挑戦を続ける。</p>
+      </div>
+    </div>
+    <div class="teacher">
+      <div class="body">
+        <span class="lbl">TEAM</span>
+        <h3>分野を越えた専門家チーム</h3>
+        <p>やまがBASE㈱を軸に、<b style="color:var(--ink)">経営・AI・資金調達・マーケティング・食農・地方創生</b>など各領域の専門家と連携。御社の課題に合わせて最適なチームを編成します。</p>
+        <p class="role" style="color:#9a9384;font-weight:400;margin-top:8px;"><span class="ph">要確認：連携先の社名・ロゴ公表可否</span></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SECTION 11：進め方・費用 ========== -->
+  <section class="bg-paper">
+    <p class="eyebrow">FLOW</p>
+    <h2 class="section-title">はじめ方は、<br />かんたんです。</h2>
+    <div class="steps">
+      <div class="step"><span class="no">01</span><span class="t">お問い合わせ</span></div>
+      <div class="step"><span class="no">02</span><span class="t">ヒアリング</span></div>
+      <div class="step"><span class="no">03</span><span class="t">プログラム設計</span></div>
+      <div class="step"><span class="no">04</span><span class="t">実施（合宿・研修）</span></div>
+      <div class="step"><span class="no">05</span><span class="t">フォローアップ・実装伴走</span></div>
+    </div>
+    <p class="lead" style="margin-top:16px;font-size:12.5px;">費用：内容・規模・期間に応じてお見積り <span class="ph">要確認：費用の見せ方</span></p>
+  </section>
+
+  <!-- ========== SECTION 12：FAQ ========== -->
+  <section class="bg-cream2">
+    <p class="eyebrow">FAQ</p>
+    <h2 class="section-title">よくあるご質問。</h2>
+    <div class="faq-list">
+      <details class="faq"><summary><span class="qm">Q</span>施設を使わず自社で実施できますか？</summary><div class="a">はい。御社拠点・オンラインでも可能です。</div></details>
+      <details class="faq"><summary><span class="qm">Q</span>研修後のフォローはありますか？</summary><div class="a">はい。継続コンサルで実装・改善まで伴走します。</div></details>
+      <details class="faq"><summary><span class="qm">Q</span>研修以外（資金調達・マーケ・AI等）も相談できますか？</summary><div class="a">はい、幅広く対応します。</div></details>
+      <details class="faq"><summary><span class="qm">Q</span>新規事業の相談だけでも可能ですか？</summary><div class="a">はい、研修なしでも承ります。</div></details>
+      <details class="faq"><summary><span class="qm">Q</span>まず相談だけでも大丈夫ですか？</summary><div class="a">もちろんです。お気軽にどうぞ。</div></details>
+    </div>
+  </section>
+
+  <!-- ========== 最終CTA ========== -->
+  <section>
+    <div class="cta-panel center">
+      <h3 style="text-align:center;">「学んで終わり」を、<br />卒業しよう。</h3>
+      <p class="cap" style="margin-top:14px;text-align:center;">研修も、新規事業も、合宿も。まずは御社の課題をお聞かせください。最適な組み合わせを一緒に設計します。</p>
+      <div class="btns">
+        <a class="btn btn-gold" href="#">無料で相談する
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== フッター ========== -->
+  <footer>
+    <p class="tag" style="font-size:13px;color:rgba(255,255,255,.85);">
+      やまがBASE株式会社<br />熊本県山鹿市鹿央町千田4187
+    </p>
+  </footer>
+
+</div>
+</body>
+</html>

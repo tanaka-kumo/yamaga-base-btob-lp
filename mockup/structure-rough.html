@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>YAMAGA BASE B2B｜サイト構成ラフ（レビュー用）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --base:#faf8f4;        /* オフホワイト */
+    --paper:#ffffff;
+    --ink:#1f2630;         /* ネイビーチャコール */
+    --ink-soft:#46505c;
+    --muted:#8a929c;
+    --accent:#e0852f;      /* 灯籠アンバー */
+    --accent-d:#c06a18;
+    --green:#3f6b5a;       /* 自然のグリーン */
+    --line:#e7e2d8;
+    --hex:#f0 ;
+    --shadow:0 10px 30px rgba(31,38,48,.06);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0}
+  body{
+    font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN",sans-serif;
+    color:var(--ink); background:var(--base); line-height:1.85;
+    -webkit-font-smoothing:antialiased; font-size:15px;
+  }
+  .en{font-family:"Inter",sans-serif; letter-spacing:.08em}
+  .wrap{max-width:880px; margin:0 auto; padding:0 28px}
+
+  /* ---- レビュー用の注記バー ---- */
+  .reviewbar{
+    background:var(--ink); color:#fff; padding:10px 0; font-size:12.5px;
+  }
+  .reviewbar .wrap{display:flex; gap:14px; align-items:center; justify-content:space-between; flex-wrap:wrap}
+  .reviewbar b{color:#fff}
+  .reviewbar .tag{background:var(--accent); color:#fff; padding:2px 10px; border-radius:999px; font-weight:700; font-size:11.5px}
+
+  /* ---- セクション共通 ---- */
+  section{padding:46px 0; border-bottom:1px solid var(--line); background:var(--base); break-inside:avoid;}
+  section.alt{background:var(--paper)}
+  .idx{
+    display:flex; align-items:center; gap:10px; margin-bottom:14px;
+  }
+  .idx .num{
+    font-family:"Inter",sans-serif; font-weight:800; font-size:12px; letter-spacing:.12em;
+    color:var(--accent-d); background:#fbeede; border:1px solid #f3d9b4;
+    padding:3px 10px; border-radius:6px;
+  }
+  .idx .kind{font-size:11.5px; color:var(--muted); letter-spacing:.04em}
+  .idx .role{font-size:11.5px; color:var(--green); margin-left:auto; font-weight:700}
+
+  h2.sec{font-size:23px; line-height:1.5; margin:.1em 0 .5em; font-weight:900; letter-spacing:.01em}
+  .lead{color:var(--ink-soft); font-size:14.5px; margin:.2em 0 1em}
+  p{margin:.5em 0}
+  .small{font-size:12.5px; color:var(--muted)}
+
+  /* 要確認チップ */
+  .ph{display:inline-block; background:#fff3e2; color:var(--accent-d); border:1px dashed var(--accent);
+      border-radius:5px; padding:0 7px; font-size:12px; font-weight:700; white-space:nowrap}
+
+  /* CTAボタン（ラフ） */
+  .btn{display:inline-block; background:var(--accent); color:#fff; font-weight:700; font-size:14px;
+       padding:11px 22px; border-radius:10px; text-decoration:none; box-shadow:var(--shadow)}
+  .btn.ghost{background:transparent; color:var(--ink); border:1.5px solid var(--ink); box-shadow:none}
+  .ctas{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px}
+
+  /* 写真プレースホルダ */
+  .ph-img{background:repeating-linear-gradient(45deg,#efeadf,#efeadf 12px,#e8e2d5 12px,#e8e2d5 24px);
+    border:1px solid var(--line); border-radius:12px; color:#9a9384; display:flex; align-items:center;
+    justify-content:center; font-size:12.5px; text-align:center; min-height:120px}
+
+  /* カード */
+  .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:10px}
+  .card{background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:16px; box-shadow:var(--shadow)}
+  .card .lbl{font-size:11px; color:var(--accent-d); font-weight:800; letter-spacing:.08em}
+  .card h4{margin:.3em 0 .35em; font-size:15.5px}
+  .card.lead-card{border-color:var(--accent); box-shadow:0 12px 26px rgba(224,133,47,.16)}
+  .card p{font-size:13px; color:var(--ink-soft); margin:.2em 0}
+
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:8px}
+  @media(max-width:680px){.cards{grid-template-columns:1fr}.two{grid-template-columns:1fr}}
+
+  /* 強み行 */
+  .pts{list-style:none; padding:0; margin:8px 0 0}
+  .pts li{position:relative; padding:10px 0 10px 30px; border-top:1px dashed var(--line)}
+  .pts li:first-child{border-top:0}
+  .pts li::before{content:"◆"; position:absolute; left:4px; top:9px; color:var(--accent); font-size:13px}
+  .pts b{display:block; font-size:14.5px}
+  .pts span{font-size:13px; color:var(--ink-soft)}
+
+  /* ロゴ枠 */
+  .logos{display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:10px}
+  .logo-box{background:var(--paper); border:1px dashed var(--line); border-radius:10px; height:58px;
+    display:flex; align-items:center; justify-content:center; color:#b9b3a6; font-size:11px}
+  @media(max-width:680px){.logos{grid-template-columns:repeat(3,1fr)}}
+
+  /* フロー */
+  .flow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+  .flow .step{background:var(--paper); border:1px solid var(--line); border-radius:999px; padding:8px 16px; font-size:13px; font-weight:700}
+  .flow .arr{align-self:center; color:var(--accent); font-weight:800}
+
+  /* ヒーロー */
+  .hero{background:linear-gradient(160deg,#1f2630 0%,#2b3a40 60%,#3f6b5a 140%); color:#fff; border-bottom:0}
+  .hero .wrap{padding-top:54px; padding-bottom:54px; position:relative}
+  .hero .kicker{color:#ffd9a8; font-size:12px; letter-spacing:.18em; font-weight:700}
+  .hero h1{font-size:33px; line-height:1.45; margin:.35em 0 .35em; font-weight:900}
+  .hero p{color:#e7ebe9; font-size:15px; max-width:600px}
+  .hero .by{position:absolute; top:18px; right:28px; font-family:"Inter"; font-weight:800; letter-spacing:.02em; color:#ffd9a8; font-size:18px}
+  .hero .hex{position:absolute; right:-30px; bottom:-30px; width:220px; height:220px; opacity:.12}
+  .hero .ph-img{background:rgba(255,255,255,.06); border:1px dashed rgba(255,255,255,.3); color:#cfd6d2; margin-top:18px}
+
+  /* FAQ */
+  .qa{border-top:1px dashed var(--line); padding:10px 0}
+  .qa:first-child{border-top:0}
+  .qa .q{font-weight:700; font-size:14px}
+  .qa .a{font-size:13px; color:var(--ink-soft)}
+
+  /* フッター */
+  footer{background:var(--ink); color:#cfd5da; padding:30px 0; font-size:13px; border:0}
+  footer .by{font-family:"Inter"; font-weight:800; color:#ffd9a8; font-size:20px}
+  footer a{color:#cfd5da}
+
+  .note{background:#fbf4e9; border:1px solid #f1ddbe; border-radius:10px; padding:10px 14px; font-size:12.5px; color:#7a5a26; margin-top:12px}
+
+  @media print{
+    body{font-size:12px; background:#fff}
+    .reviewbar{position:static}
+    section,.hero{padding:26px 0; break-inside:avoid}
+    .btn{box-shadow:none}
+    @page{size:A4; margin:12mm}
+  }
+</style>
+</head>
+<body>
+
+<div class="reviewbar">
+  <div class="wrap">
+    <span><b>YAMAGA BASE ｜ 法人向けB2B</b> サイト構成ラフ</span>
+    <span class="small" style="color:#b9c0c6">※ 配色・体裁は現行サイトのトンマナ仮反映／文言・写真は確認待ち</span>
+    <span class="tag">REVIEW DRAFT</span>
+  </div>
+</div>
+
+<!-- 1. ヒーロー -->
+<section class="hero">
+  <div class="wrap">
+    <span class="by">bY</span>
+    <div class="idx"><span class="num">SECTION 01</span><span class="kind" style="color:#cdd4d8">ヒーロー（ファーストビュー）</span></div>
+    <div class="kicker">YAMAGA BASE ｜ 法人向け 経営研修・事業開発</div>
+    <h1>世界水準の経営学を、<br>自社のチームに。</h1>
+    <p>世界トップのビジネススクールで体系化された経営知を、近場で・カジュアルに。研修で終わらせず、実装・新規事業・地域での挑戦まで、私たちが継続して伴走します。</p>
+    <div class="ctas">
+      <a class="btn" href="#">相談する</a>
+      <a class="btn ghost" href="#" style="color:#fff;border-color:#fff">資料を見る</a>
+    </div>
+    <div class="ph-img" style="min-height:140px">📷 象徴ビジュアル（要確認：許諾写真）</div>
+  </div>
+</section>
+
+<!-- 2. 共感 -->
+<section class="alt">
+  <div class="wrap">
+    <div class="idx"><span class="num">SECTION 02</span><span class="kind">共感（経営課題の言語化）</span><span class="role">読み進めさせる</span></div>
+    <h2 class="sec">その学び、半年後も会社に残っていますか。</h2>
+    <p class="lead">研修はやった。でも現場は変わらない——そんな経験はありませんか。</p>
+    <ul class="pts">
+      <li><span>幹部・後継者を育てたいが、経営を体系的に学べる場が県内に乏しい。</span></li>
+      <li><span>戦略を腰を据えて考え抜く時間と、壁打ち相手がいない。</span></li>
+      <li><span>新しい事業を生みたいが、社内に0→1を伴走できる知見がない。</span></li>
+      <li><span>研修は単発で終わり、学びが実務にも継続にもつながらない。</span></li>
+    </ul>
+    <p style="margin-top:12px;font-weight:700">——「学んで終わり」から、「学んで動き出す」へ。</p>
+  </div>
+</section>
+
+<!-- 3. 全体像 -->
+<section>
+  <div class="wrap">
+    <div class="idx"><span class="num">SECTION 03</span><span class="kind">私たちができること（全体像）</span></div>
+    <h2 class="sec">研修から、事業開発まで。一気通貫で伴走します。</h2>
+    <div class="cards">
+      <div class="card lead-card"><span class="lbl">① 主役</span><h4>経営研修（MBAエッセンス）</h4><p>世界水準の経営知を、自社向けにカスタマイズ。</p></div>
+      <div class="card"><span class="lbl">②</span><h4>新規事業開発支援</h4><p>0→1の構想から検証・立ち上げまで、伴走型で。</p></div>
+      <div class="card"><span class="lbl">③</span><h4>地方創生事業支援</h4><p>地域の資源を事業に。挑戦を地域から。</p></div>
+    </div>
+    <p class="small" style="margin-top:12px">経営戦略から、マーケティング、資金調達、新規事業、AI活用、食農・地方創生まで。「これは社内に聞ける人がいない」という領域も、まとめて相談できます。</p>
+  </div>
+</section>
+
+<!-- 4. 実績ロゴ -->
+<section class="alt">
+  <div class="wrap">
+    <div class="idx"><span class="num">SECTION 04</span><span class="kind">実績・ご一緒した企業（ロゴ）★新規</span><span class="role">信頼を早く効かせる</span></div>
+    <h2 class="sec">これまで、こんな企業様とご一緒してきました。</h2>
+    <div class="logos">
+      <div class="logo-box">LOGO</div><div class="logo-box">LOGO</div><div class="logo-box">LOGO</div><div class="logo-box">LOGO</div><div class="logo-box">LOGO</div>
+      <div class="logo-box">LOGO</div><div class="logo-box">LOGO</div><div class="logo-box">LOGO</div><div class="logo-box">LOGO</div><div class="logo-box">LOGO</div>
+    </div>
+    <div class="note">※ 掲載は許諾をいただいた企業様のみ。<span class="ph">要確認：許諾企業リスト・ロゴデータ</span> 許諾が揃うまでこの枠は非表示も可。</div>
+  </div>
+</section>
+
+<!-- 5. 主役：研修 -->
+<section>
+  <div class="wrap">
+    <div class="idx"><span class="num">SECTION 05</span><span class="kind">主役：経営研修（MBAエッセンス）</span><span class="role">稟議の材料を渡す</span></div>
+    <h2 class="sec">経営研修｜世界水準の経営学を、カジュアルに。</h2>
+    <p class="lead">代表・中原功寛（ハーバードMBA）が設計する、実務直結の経営研修。御社の課題に合わせてカスタマイズし、フレーム→試作→改善まで「使える」状態にします。</p>
+    <ul class="pts">
+      <li><b>世界水準を、カジュアルに。</b><span>本来は3〜4,000万円以上ともいわれる世界トップMBAで学ぶ経営知のエッセンスを、近場で・無理なく。<span class="ph">要確認：金額の最終表現</span></span></li>
+      <li><b>心理的安全性が高い。</b><span>「こんなことを聞いて大丈夫か」「浅いと思われないか」——その心配はいりません。本音で問える場が、思考を深くします。</span></li>
+      <li><b>何でも相談できる幅。</b><span>経営戦略・マーケティング・資金調達・新規事業・AI活用・食農まで。課題に合わせて研修の中身そのものをカスタマイズ。</span></li>
+      <li><b>研修で終わらせない。</b><span>研修後もフォローアップ・コンサルで伴走（→ 次セクション）。</span></li>
+    </ul>
+    <p class="small" style="margin-top:10px">対象：経営者／幹部／後継者育成　｜　費用：内容・規模に応じてお見積り <span class="ph">要確認：研修の正式名称・形態・料金</span></p>
+    <div class="ctas"><a class="btn" href="#">研修を相談する</a></div>
+  </div>
+</section>
+
+<!-- 6. 継続コンサル -->
+<section class="alt">
+  <div class="wrap">
+    <div class="idx"><span class="num">SECTION 06</span><span class="kind">学びを止めない（フォローアップ・コンサル）</span><span class="role">最大の差別化</span></div>
+    <h2 class="sec">研修の、その先まで。</h2>
+    <p>多くの研修は、終わった瞬間に止まります。私たちは違います。学んだフレームを自社の現場に落とし込み、試し、改善する——その過程を継続コンサルティングで伴走。学びが「知っている」で終わらず、<b>「成果が出る」まで並走</b>します。</p>
+    <p class="small"><span class="ph">要確認：継続コンサルの形態・契約単位・料金</span></p>
+  </div>
+</section>
+
+<!-- 7. 新規事業/地方創生 -->
+<section>
+  <div class="wrap">
+    <div class="idx"><span class="num">SECTION 07</span><span class="kind">次点：新規事業開発支援／地方創生事業支援</span></div>
+    <h2 class="sec">学びを、挑戦に変える。</h2>
+    <div class="two">
+      <div class="card"><span class="lbl">新規事業開発支援</span><h4>インキュベーション</h4><p>アントレプレナーシップとイノベーションをテーマに、構想・検証・立ち上げを伴走。資金調達やマーケティングの知見も含めて。</p></div>
+      <div class="card"><span class="lbl">地方創生事業支援</span><h4>地域から挑戦を</h4><p>地域の資源・課題を事業へ。食農・地域発信などの実践知をもとに後押し。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 学びの場（2軸） -->
+<section class="alt">
+  <div class="wrap">
+    <div class="idx"><span class="num">SECTION 08</span><span class="kind">学びの場は、選べます（提供形態・2軸）</span><span class="role">施設一択の誤読を解消</span></div>
+    <h2 class="sec">学びの場は、選べます。</h2>
+    <div class="two">
+      <div class="card lead-card">
+        <span class="lbl">① YAMAGA BASE で（合宿型）</span>
+        <h4>廃校という、大人の秘密基地</h4>
+        <p>熊本県山鹿市の廃校をまるごと。日常を離れ、チームで考え抜く1〜2泊。校舎・体育館・宿泊・食まで同一敷地、移動ゼロで。</p>
+        <div class="ph-img" style="min-height:90px;margin-top:8px">📷 廃校×灯籠の内装（要確認：写真）</div>
+        <p class="small" style="margin-top:8px">植木ICから約10分／空港から約40分／新幹線新玉名駅から約25分</p>
+      </div>
+      <div class="card">
+        <span class="lbl">② 御社へ伺います（出張・オンライン）</span>
+        <h4>場所を問わず、同じ品質で</h4>
+        <p>御社の拠点でも、オンラインでも。場所を問わず、同じ品質の学びを。県外・多忙な企業にも。</p>
+        <div class="ph-img" style="min-height:90px;margin-top:8px">📷 出張/オンライン研修の様子（要確認）</div>
+      </div>
+    </div>
+    <p style="margin-top:12px;font-weight:700">施設を使うかどうかは、御社の目的しだい。研修の価値は、場所に縛られません。</p>
+  </div>
+</section>
+
+<!-- 9. 講師・体制 -->
+<section>
+  <div class="wrap">
+    <div class="idx"><span class="num">SECTION 09</span><span class="kind">講師・体制</span><span class="role">信頼の担保</span></div>
+    <h2 class="sec">世界水準の経営を、地元から。</h2>
+    <div class="two">
+      <div class="card">
+        <span class="lbl">講師</span><h4>中原 功寛（なかはら・かつもと）</h4>
+        <p>山鹿市出身・旧千田小卒。米国大学を首席・早期卒業し、2018年ハーバード・ビジネス・スクールでMBA取得。やまがBASE㈱代表として地域×経営の現場で挑戦を続ける。</p>
+      </div>
+      <div class="card">
+        <span class="lbl">体制</span><h4>分野を越えた専門家チーム</h4>
+        <p>やまがBASE㈱を軸に、<b>経営・AI・資金調達・マーケティング・食農・地方創生</b>など各領域の専門家と連携。御社の課題に合わせて最適なチームを編成します。</p>
+        <p class="small"><span class="ph">要確認：連携先の社名・ロゴ公表可否（現段階は非公表方針）</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. 進め方・費用 -->
+<section class="alt">
+  <div class="wrap">
+    <div class="idx"><span class="num">SECTION 10</span><span class="kind">進め方・費用感</span></div>
+    <h2 class="sec">はじめ方は、かんたんです。</h2>
+    <div class="flow">
+      <span class="step">お問い合わせ</span><span class="arr">›</span>
+      <span class="step">ヒアリング</span><span class="arr">›</span>
+      <span class="step">プログラム設計</span><span class="arr">›</span>
+      <span class="step">実施</span><span class="arr">›</span>
+      <span class="step">フォローアップ</span>
+    </div>
+    <p class="small" style="margin-top:12px">費用：内容・規模・期間に応じてお見積り <span class="ph">要確認：費用の見せ方（見積のみ／目安レンジ）</span></p>
+  </div>
+</section>
+
+<!-- 11. FAQ -->
+<section>
+  <div class="wrap">
+    <div class="idx"><span class="num">SECTION 11</span><span class="kind">FAQ</span></div>
+    <h2 class="sec">よくあるご質問</h2>
+    <div class="qa"><div class="q">Q. 施設を使わず自社で実施できますか？</div><div class="a">A. はい。御社拠点・オンラインでも可能です。</div></div>
+    <div class="qa"><div class="q">Q. 研修後のフォローはありますか？</div><div class="a">A. はい。継続コンサルで実装・改善まで伴走します。</div></div>
+    <div class="qa"><div class="q">Q. 研修以外（資金調達・マーケ・AI等）も相談できますか？</div><div class="a">A. はい、幅広く対応します。</div></div>
+    <div class="qa"><div class="q">Q. 新規事業の相談だけでも可能ですか？</div><div class="a">A. はい、研修なしでも承ります。</div></div>
+    <div class="qa"><div class="q">Q. まず相談だけでも大丈夫ですか？</div><div class="a">A. もちろんです。お気軽にどうぞ。</div></div>
+  </div>
+</section>
+
+<!-- 12. 最終CTA -->
+<section class="hero" style="background:linear-gradient(160deg,#c06a18,#e0852f)">
+  <div class="wrap" style="text-align:center">
+    <div class="idx" style="justify-content:center"><span class="num" style="background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.4);color:#fff">SECTION 12</span><span class="kind" style="color:#fff">最終CTA</span></div>
+    <h2 class="sec" style="color:#fff;font-size:26px">「学んで終わり」を、卒業しよう。</h2>
+    <p style="color:#fff;max-width:560px;margin:0 auto 14px">研修も、新規事業も、合宿も。まずは御社の課題をお聞かせください。最適な組み合わせを一緒に設計します。</p>
+    <a class="btn ghost" href="#" style="color:#fff;border-color:#fff">相談する</a>
+    <p class="small" style="color:#fff2e2;margin-top:10px"><span class="ph" style="background:rgba(255,255,255,.18);color:#fff;border-color:#fff">要確認：B2B問い合わせ窓口</span></p>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer>
+  <div class="wrap">
+    <span class="by">bY</span>
+    <p>運営：やまがBASE株式会社（Yamaga Base, Inc.）／ 熊本県山鹿市鹿央町千田4187<br>
+    既存サイト（施設・コミュニティ）：<a href="https://www.yamagabase.com/">www.yamagabase.com</a></p>
+    <p class="small" style="color:#8e979e">be You. beyond You. we will stand bY. at base de Yamaga.</p>
+  </div>
+</footer>
+
+</body>
+</html>
