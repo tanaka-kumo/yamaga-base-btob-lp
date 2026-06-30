@@ -1,12 +1,27 @@
-import { Section, Eyebrow, SectionTitle, Lead, SubTeal } from "@/components/site/section";
-import { ChatBubble } from "@/components/site/chat-bubble";
+import { Frown, Annoyed, Meh, ArrowDown } from "lucide-react";
+import { Section, Eyebrow, SectionTitle, SubTeal } from "@/components/site/section";
+import { cn } from "@/lib/utils";
 
-// 画像は透明余白をトリミング済み（*-trim.png）。w/h はトリミング後の実寸。
-const ISSUES = [
-  { no: "01", img: "/assets/illust/empathy-1-trim.png", w: 373, h: 633, text: "幹部・後継者を育てたいが、経営を体系的に学べる場が県内に乏しい。" },
-  { no: "02", img: "/assets/illust/empathy-2-trim.png", w: 335, h: 612, text: "戦略を腰を据えて考え抜く時間と、壁打ち相手がいない。" },
-  { no: "03", img: "/assets/illust/empathy-3-trim.png", w: 338, h: 624, text: "新しい事業を生みたいが、社内に0→1を伴走できる知見がない。" },
-  { no: "04", img: "/assets/illust/empathy-4-trim.png", w: 409, h: 628, text: "研修は単発で終わり、学びが実務にも継続にもつながらない。" },
+// 3連ペイン（260630_FV案.md）。温度を 困惑→深刻→無感情 で上げる。
+const PAINS = [
+  {
+    Icon: Frown,
+    color: "text-tan",
+    lines: ["研修はやった。", "でも、現場は何も変わっていない…"],
+    label: "学びが“やって終わり”になっている",
+  },
+  {
+    Icon: Annoyed,
+    color: "text-gold-d",
+    lines: ["何から手をつければ？", "結局、誰も決めきれない…"],
+    label: "大きい組織ほど、最初の一歩が出ない",
+  },
+  {
+    Icon: Meh,
+    color: "text-ink-soft",
+    lines: ["戦略は立てた。", "なのに、数年そのまま…"],
+    label: "“わかっている”が“動いている”に変わらない",
+  },
 ];
 
 export function Empathy() {
@@ -14,26 +29,30 @@ export function Empathy() {
     <Section tone="cream-2">
       <Eyebrow>YOUR ISSUES</Eyebrow>
       <SectionTitle>
-        その学び、半年後も
+        研修・人材育成に関する、
         <br />
-        会社に残っていますか。
+        こんなお悩みはありませんか？
       </SectionTitle>
-      <Lead className="mt-6">
-        研修はやった。でも現場は変わらない——
-        <br />
-        そんな経験はありませんか。
-      </Lead>
-      <div className="mt-6 flex flex-col gap-3.5">
-        {ISSUES.map((it) => (
-          <ChatBubble key={it.no} src={it.img} no={it.no} imgW={it.w} imgH={it.h} alt="悩む経営者のイラスト">
-            {it.text}
-          </ChatBubble>
+
+      <div className="mt-8 flex flex-col gap-4 md:mt-12 md:grid md:grid-cols-3 md:gap-6">
+        {PAINS.map((p) => (
+          <div key={p.label} className="rounded-card bg-paper p-6 text-center shadow-card md:p-7">
+            <p.Icon className={cn("mx-auto size-10", p.color)} strokeWidth={1.6} aria-hidden />
+            <p className="mt-4 text-[14px] leading-[1.9] text-ink-soft">
+              「{p.lines[0]}」
+              <br />
+              「{p.lines[1]}」
+            </p>
+            <ArrowDown className="mx-auto my-3.5 size-5 text-gold" aria-hidden />
+            <p className="text-[15px] font-bold leading-[1.6] text-ink">{p.label}</p>
+          </div>
         ))}
       </div>
-      <SubTeal className="mt-7">
-        「学んで終わり」から、
+
+      <SubTeal className="mt-12 text-[24px] md:text-[30px]">
+        ここでのゴールは、「わかった」じゃない。
         <br />
-        「学んで動き出す」へ。
+        「動き出した」だ。
       </SubTeal>
     </Section>
   );
