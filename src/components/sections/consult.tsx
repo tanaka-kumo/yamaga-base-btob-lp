@@ -5,8 +5,8 @@ import { CtaButton } from "@/components/site/cta-button";
 // SECTION 05：無料オンライン個別相談（メインCTA・濃色パネル）。
 export function Consult() {
   return (
-    <Section>
-      <CtaPanel>
+    <Section width="narrow">
+      <CtaPanel className="md:p-9">
         <div className="border-b border-white/15 pb-3 text-xs text-white/70">
           御社に合うか、まず話してみる
         </div>

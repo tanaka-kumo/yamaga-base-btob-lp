@@ -17,13 +17,16 @@ export function Process() {
         <br />
         かんたんです。
       </SectionTitle>
-      <div className="mt-6 flex flex-col gap-2.5">
+      <div className="mt-6 flex flex-col gap-2.5 md:mt-10 md:flex-row md:gap-3">
         {STEPS.map((s) => (
-          <div key={s.no} className="flex items-center gap-3.5 rounded-2xl bg-paper px-[18px] py-4 shadow-card">
-            <span className="w-[34px] flex-none text-center font-[family-name:var(--font-montserrat)] text-2xl font-extrabold italic text-gold">
+          <div
+            key={s.no}
+            className="flex items-center gap-3.5 rounded-2xl bg-paper px-[18px] py-4 shadow-card md:flex-1 md:flex-col md:items-center md:gap-2 md:px-3 md:py-6 md:text-center"
+          >
+            <span className="w-[34px] flex-none text-center font-[family-name:var(--font-montserrat)] text-2xl font-extrabold italic text-gold md:w-auto md:text-3xl">
               {s.no}
             </span>
-            <span className="text-[15px] font-bold text-ink">{s.t}</span>
+            <span className="text-[15px] font-bold text-ink md:text-[13.5px]">{s.t}</span>
           </div>
         ))}
       </div>

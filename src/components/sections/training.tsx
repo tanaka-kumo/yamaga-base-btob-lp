@@ -21,24 +21,26 @@ export function Training() {
         経営学を、カジュアルに。
       </SectionTitle>
       <MediaFrame
-        className="mt-[22px]"
+        className="mt-[22px] md:mx-auto md:max-w-[880px]"
         ratio="16/9"
         src="/assets/img/_DSC1968.jpg"
         alt="世界各都市の時計が並ぶ YAMAGA BASE の壁面"
       />
-      <Lead className="mt-6">
+      <Lead className="mt-6 md:mx-auto md:max-w-[760px]">
         代表・中原功寛（ハーバードMBA）が設計する、実務直結の経営研修。御社の課題に合わせてカスタマイズし、フレーム→試作→改善まで「使える」状態にします。
       </Lead>
 
-      <FitBox title="こんな企業様へおすすめ">
-        <FitRow>幹部・後継者に、体系的な経営知を身につけさせたい</FitRow>
-        <FitRow>研修を「学んで終わり」にせず、実務・新規事業まで繋げたい</FitRow>
-        <FitRow>戦略・資金調達・AI活用など、社内に相談できる人がいない領域を任せたい</FitRow>
-      </FitBox>
+      <div className="md:mx-auto md:max-w-[760px]">
+        <FitBox title="こんな企業様へおすすめ">
+          <FitRow>幹部・後継者に、体系的な経営知を身につけさせたい</FitRow>
+          <FitRow>研修を「学んで終わり」にせず、実務・新規事業まで繋げたい</FitRow>
+          <FitRow>戦略・資金調達・AI活用など、社内に相談できる人がいない領域を任せたい</FitRow>
+        </FitBox>
+      </div>
 
       <Eyebrow className="mt-[46px]">FEATURES</Eyebrow>
       <SectionTitle>経営研修｜4つの特徴。</SectionTitle>
-      <div className="mt-6 flex flex-col gap-[18px]">
+      <div className="mt-6 flex flex-col gap-[18px] md:grid md:grid-cols-2 md:gap-6">
         {FEATURES.map((f) => (
           <FeatureCard key={f.num} num={f.num} numColor={f.color} title={f.title}>
             {f.body}

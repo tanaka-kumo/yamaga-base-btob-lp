@@ -59,7 +59,7 @@ export function Overview() {
         </svg>
       </div>
 
-      <div className="mt-[18px] flex flex-col gap-[18px]">
+      <div className="mt-[18px] flex flex-col gap-[18px] md:mt-8 md:grid md:grid-cols-3 md:gap-5">
         <BizCard lead tone="teal" src="/assets/illust/svc-training-trim.png" alt="経営研修のイラスト" label="① 主役" title="経営研修（MBAエッセンス）">
           世界水準の経営知を、自社向けにカスタマイズして。
         </BizCard>

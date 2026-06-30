@@ -10,7 +10,7 @@ const QA = [
 
 export function Faq() {
   return (
-    <Section id="faq" tone="cream-2">
+    <Section id="faq" tone="cream-2" width="narrow">
       <Eyebrow>FAQ</Eyebrow>
       <SectionTitle>よくあるご質問。</SectionTitle>
       <div className="mt-[22px]">

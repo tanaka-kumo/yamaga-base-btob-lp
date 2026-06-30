@@ -6,7 +6,7 @@ export function Ventures() {
     <Section id="ventures" tone="cream-2">
       <Eyebrow>New Business</Eyebrow>
       <SectionTitle>学びを、挑戦に変える。</SectionTitle>
-      <div className="mt-6 flex flex-col gap-[18px]">
+      <div className="mt-6 flex flex-col gap-[18px] md:mt-10 md:grid md:grid-cols-2 md:gap-6">
         <BizCard tone="gold" src="/assets/illust/biz-incubation-trim.png" alt="インキュベーションのイラスト" label="新規事業開発支援" title="インキュベーション">
           構想・検証・立ち上げを伴走。資金調達やマーケティングの知見も含めて。
         </BizCard>

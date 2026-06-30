@@ -11,7 +11,8 @@ export function Instructor() {
         地元から。
       </SectionTitle>
 
-      <div className="mt-6 overflow-hidden rounded-card bg-paper shadow-card">
+      <div className="mt-6 grid gap-6 md:mt-10 md:grid-cols-2 md:items-start">
+      <div className="overflow-hidden rounded-card bg-paper shadow-card">
         <MediaFrame
           ratio="5/4"
           className="rounded-none shadow-none"
@@ -30,7 +31,7 @@ export function Instructor() {
         </div>
       </div>
 
-      <div className="mt-6 overflow-hidden rounded-card bg-paper shadow-card">
+      <div className="overflow-hidden rounded-card bg-paper shadow-card">
         <div className="p-5">
           <span className="font-[family-name:var(--font-montserrat)] text-[11px] font-bold tracking-[0.06em] text-tan">
             TEAM
@@ -45,6 +46,7 @@ export function Instructor() {
             </span>
           </p>
         </div>
+      </div>
       </div>
     </Section>
   );

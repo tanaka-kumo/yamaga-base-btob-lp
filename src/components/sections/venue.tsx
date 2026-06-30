@@ -42,7 +42,7 @@ export function Venue() {
     <Section id="venue" tone="paper">
       <Eyebrow>Two Ways</Eyebrow>
       <SectionTitle>学びの場は、選べます。</SectionTitle>
-      <div className="mt-6 flex flex-col gap-[18px]">
+      <div className="mt-6 flex flex-col gap-[18px] md:mt-10 md:grid md:grid-cols-2 md:gap-6">
         <DuoCard
           lead
           label="① YAMAGA BASE で（合宿型）"

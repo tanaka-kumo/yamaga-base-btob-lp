@@ -4,8 +4,8 @@ import { CtaButton } from "@/components/site/cta-button";
 
 export function FinalCta() {
   return (
-    <Section>
-      <CtaPanel center>
+    <Section width="narrow">
+      <CtaPanel center className="md:p-10">
         <h3 className="text-[26px] font-black leading-[1.35]">
           「学んで終わり」を、
           <br />

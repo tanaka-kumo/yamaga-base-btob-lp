@@ -26,7 +26,7 @@ export function Results() {
         <br />
         動画でご覧ください。
       </SectionTitle>
-      <div className="relative mt-5 aspect-video w-full overflow-hidden rounded-card bg-black shadow-card">
+      <div className="relative mt-5 aspect-video w-full overflow-hidden rounded-card bg-black shadow-card md:mx-auto md:mt-8 md:max-w-[820px]">
         <iframe
           src="https://www.youtube.com/embed/Bth_DS0HAS0"
           title="YAMAGA BASE 実績動画"

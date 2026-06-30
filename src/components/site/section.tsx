@@ -12,19 +12,23 @@ export function Section({
   id,
   tone,
   alt,
+  width = "wide",
   className,
   children,
 }: {
   id?: string;
   tone?: SectionTone;
   alt?: boolean;
+  /** デスクトップ最大幅：wide=1080 / narrow=720（CTA・FAQ等の可読幅） */
+  width?: "wide" | "narrow";
   className?: string;
   children: React.ReactNode;
 }) {
   const bg = tone ? TONE_BG[tone] : alt ? "bg-paper" : "bg-cream";
+  const maxw = width === "narrow" ? "md:max-w-[720px]" : "md:max-w-[1080px]";
   return (
-    <section id={id} className={cn("scroll-mt-16 px-[22px] py-12", bg, className)}>
-      <div data-reveal className="mx-auto w-full max-w-[460px]">
+    <section id={id} className={cn("scroll-mt-16 px-[22px] py-12 md:py-20", bg, className)}>
+      <div data-reveal className={cn("mx-auto w-full max-w-[460px]", maxw)}>
         {children}
       </div>
     </section>
