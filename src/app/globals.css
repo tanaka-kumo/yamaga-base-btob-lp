@@ -7,7 +7,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-noto-sans-jp), var(--font-inter), system-ui, sans-serif;
+  /* 高視認性ゴシック（Schoo相当）。Noto Sans JP はWebフォントとしてフォールバック。 */
+  --font-sans: "Hiragino Kaku Gothic ProN", "Hiragino Sans", var(--font-noto-sans-jp), "Yu Gothic", Meiryo, sans-serif;
   --font-mono: ui-monospace, monospace;
 
   --shadow-soft: var(--shadow-soft);
@@ -29,6 +30,11 @@
   --color-green-d: var(--green-d);
   --color-panel: var(--panel);
   --color-border-soft: var(--border-soft);
+  /* === ブランド差し色4色（Schoo刷新） === */
+  --color-brand-orange: var(--brand-orange);
+  --color-brand-green: var(--brand-green);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-yellow: var(--brand-yellow);
   --shadow-card: var(--shadow-card);
   --shadow-btn: var(--shadow-btn);
   --radius-card: var(--radius-card);
@@ -59,47 +65,57 @@
 }
 
 :root {
-  /* === ボーダレス・モック :root（mockup/borderless-tonemanner-mock.html と一致・これが正） === */
-  --cream: #f6f1e6;
-  --cream-2: #efe8d6;
-  --paper: #ffffff;
-  --arch-tint: #e9edec;
-  --ink: #2e2c28;
-  --ink-soft: #595650;
-  --teal: #1f7a70;
-  --teal-d: #145e56;
-  --gold: #e3b24a;
-  --gold-d: #c9952f;
-  --tan: #b89150;
-  --green: #5bba82;
-  --green-d: #46a06c;
-  --panel: #2e2d2b;
-  --border-soft: #e7e0d0;
-  --radius-card: 20px;
+  /* === Schoo相当：白ベース・高視認性 === */
+  --paper: #ffffff; /* 全体背景 */
+  --cream: #f9f3ec; /* セクション交互用 */
+  --cream-2: #f4ede2; /* もう一段のクリーム */
+  --arch-tint: #eef1f0;
+  --ink: #333333; /* 見出し・主文字 */
+  --ink-soft: #575757; /* 本文補助 */
+
+  /* === ブランド差し色4色 === */
+  --brand-orange: #e8941e; /* CTA（主アクション） */
+  --brand-green: #7aae3c;
+  --brand-blue: #3aa6cc; /* リンク／アクセント */
+  --brand-yellow: #e5c72a;
+
+  --panel: #2b2b2b; /* 濃色CTAパネル */
+  --border-soft: #ece6da; /* カード境界 */
+  --radius-card: 14px;
   --radius-pill: 9999px;
-  --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-card: 0 4px 16px rgba(0, 0, 0, 0.06);
   --shadow-btn: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-  /* === shadcn トークンをモック配色へマッピング（Button/Accordion/Sheet等が追従） === */
-  --radius: 1.25rem; /* 20px 相当 */
-  --background: var(--cream);
+  /* === 旧アクセント名を新パレットへ remap（既存セクション互換・崩さない） === */
+  /* テキスト用ブルーは AA(4.5:1)確保のため濃いめ。装飾アイコンは --brand-blue(#3aa6cc) を使う */
+  --teal: #1d7d9e; /* ブルー系テキスト（白地で約4.6:1） */
+  --teal-d: #155f78;
+  --gold: var(--brand-orange);
+  --gold-d: #cf7f12;
+  --tan: #1d7d9e; /* Eyebrow＝ブルー（AA） */
+  --green: var(--brand-green);
+  --green-d: #5f9230;
+
+  /* === shadcn トークン（白ベースへ追従） === */
+  --radius: 0.875rem; /* 14px 相当 */
+  --background: var(--paper);
   --foreground: var(--ink);
   --card: var(--paper);
   --card-foreground: var(--ink);
   --popover: var(--paper);
   --popover-foreground: var(--ink);
-  --primary: var(--gold);
-  --primary-foreground: var(--ink);
-  --secondary: var(--cream-2);
+  --primary: var(--brand-orange);
+  --primary-foreground: var(--ink); /* オレンジ上は濃色文字でAA確保 */
+  --secondary: var(--cream);
   --secondary-foreground: var(--ink-soft);
-  --muted: var(--cream-2);
+  --muted: var(--cream);
   --muted-foreground: var(--ink-soft);
-  --accent: var(--cream-2);
+  --accent: var(--cream);
   --accent-foreground: var(--ink-soft);
   --destructive: oklch(0.577 0.245 27.3);
   --border: var(--border-soft);
   --input: var(--border-soft);
-  --ring: var(--gold);
+  --ring: var(--brand-orange);
 
   /* SoftCard 用（shadcn ui/card） */
   --shadow-soft: var(--shadow-card);
@@ -112,6 +128,7 @@
   }
   body {
     @apply bg-background text-foreground;
+    line-height: 1.8;
   }
 
   /* 日本語タイポ最適化 */
@@ -126,8 +143,8 @@
     overflow-wrap: anywhere;
   }
   h1, h2, h3, h4, h5, h6 {
-    line-height: 1.4;
-    letter-spacing: 0.01em;
+    line-height: 1.55;
+    letter-spacing: 0;
   }
 
   /* スクロールバー非表示ユーティリティ（横スライダー用） */

@@ -10,7 +10,7 @@ export function Consult() {
         <div className="border-b border-white/15 pb-3 text-xs text-white/70">
           御社に合うか、まず話してみる
         </div>
-        <h3 className="mt-4 text-[26px] font-black leading-[1.35]">
+        <h3 className="mt-4 text-[26px] font-bold leading-[1.35]">
           無料オンライン
           <br />
           個別相談

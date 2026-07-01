@@ -3,22 +3,23 @@ import { Section, Eyebrow, SectionTitle, SubTeal } from "@/components/site/secti
 import { cn } from "@/lib/utils";
 
 // 3連ペイン（260630_FV案.md）。温度を 困惑→深刻→無感情 で上げる。
+// アイコンはブランド4色から1色ずつ。
 const PAINS = [
   {
     Icon: Frown,
-    color: "text-tan",
+    color: "text-brand-orange",
     lines: ["研修はやった。", "でも、現場は何も変わっていない…"],
     label: "学びが“やって終わり”になっている",
   },
   {
     Icon: Annoyed,
-    color: "text-gold-d",
+    color: "text-brand-blue",
     lines: ["何から手をつければ？", "結局、誰も決めきれない…"],
     label: "大きい組織ほど、最初の一歩が出ない",
   },
   {
     Icon: Meh,
-    color: "text-ink-soft",
+    color: "text-brand-green",
     lines: ["戦略は立てた。", "なのに、数年そのまま…"],
     label: "“わかっている”が“動いている”に変わらない",
   },
@@ -26,7 +27,7 @@ const PAINS = [
 
 export function Empathy() {
   return (
-    <Section tone="cream-2">
+    <Section tone="cream">
       <Eyebrow>YOUR ISSUES</Eyebrow>
       <SectionTitle>
         研修・人材育成に関する、
@@ -36,14 +37,17 @@ export function Empathy() {
 
       <div className="mt-8 flex flex-col gap-4 md:mt-12 md:grid md:grid-cols-3 md:gap-6">
         {PAINS.map((p) => (
-          <div key={p.label} className="rounded-card bg-paper p-6 text-center shadow-card md:p-7">
+          <div
+            key={p.label}
+            className="rounded-card border border-border-soft bg-paper p-6 text-center shadow-card md:p-7"
+          >
             <p.Icon className={cn("mx-auto size-10", p.color)} strokeWidth={1.6} aria-hidden />
             <p className="mt-4 text-[14px] leading-[1.9] text-ink-soft">
               「{p.lines[0]}」
               <br />
               「{p.lines[1]}」
             </p>
-            <ArrowDown className="mx-auto my-3.5 size-5 text-gold" aria-hidden />
+            <ArrowDown className="mx-auto my-3.5 size-5 text-brand-orange" aria-hidden />
             <p className="text-[15px] font-bold leading-[1.6] text-ink">{p.label}</p>
           </div>
         ))}

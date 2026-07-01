@@ -35,12 +35,12 @@ export function Section({
   );
 }
 
-// 英語ミニラベル：Montserrat 600・くすみ金（tan）・字間広め・中央。
+// 英語ミニラベル：Montserrat 600・ブルー・中央。
 export function Eyebrow({ children, className }: { children: React.ReactNode; className?: string }) {
   return (
     <p
       className={cn(
-        "text-center font-[family-name:var(--font-montserrat)] text-xs font-semibold tracking-[0.14em] text-tan",
+        "text-center font-[family-name:var(--font-montserrat)] text-xs font-semibold tracking-[0.12em] text-tan",
         className,
       )}
     >
@@ -49,7 +49,7 @@ export function Eyebrow({ children, className }: { children: React.ReactNode; cl
   );
 }
 
-// 見出し：Noto Sans JP 900・中央・line-height 1.45。
+// 見出し：高視認性ゴシック・最大700・中央・line-height 1.55。
 export function SectionTitle({
   children,
   className,
@@ -60,7 +60,7 @@ export function SectionTitle({
   return (
     <h2
       className={cn(
-        "mt-2 text-center text-[25px] font-black leading-[1.45] tracking-[0.02em] text-ink",
+        "mt-3 text-center text-[24px] font-bold leading-[1.55] tracking-[0.01em] text-ink md:text-[28px]",
         className,
       )}
     >

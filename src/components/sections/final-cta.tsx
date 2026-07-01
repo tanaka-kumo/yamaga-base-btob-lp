@@ -6,7 +6,7 @@ export function FinalCta() {
   return (
     <Section width="narrow">
       <CtaPanel center className="md:p-10">
-        <h3 className="text-[26px] font-black leading-[1.35]">
+        <h3 className="text-[26px] font-bold leading-[1.35]">
           「学んで終わり」を、
           <br />
           卒業しよう。

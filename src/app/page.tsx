@@ -19,7 +19,7 @@ import { FinalCta } from "@/components/sections/final-cta";
 // 中央寄せの cream カラム（モバイル幅）を、greige 地の上に置く。
 export default function Home() {
   return (
-    <div className="min-h-screen bg-cream">
+    <div className="min-h-screen bg-paper">
       <main className="overflow-hidden">
         <Hero />
         <Empathy />
