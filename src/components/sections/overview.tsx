@@ -18,10 +18,9 @@ export function Overview() {
       {/* 対応できる課題領域の広さを示す控えめな帯（主役にしない） */}
       <div className="mx-auto mt-7 max-w-[150px] md:hidden">
         <Image
-          src="/assets/illust/overview-spot-trim.png"
-          alt="チームで議論する経営の現場イラスト"
-          width={797}
-          height={429}
+          src="/assets/photos/spot.jpg"
+          alt="経営について議論するミーティング"
+          width={1024}           height={768}
           className="h-auto w-full"
         />
       </div>
@@ -64,8 +63,8 @@ export function Overview() {
         <BizCard
           lead
           tone="teal"
-          src="/assets/illust/svc-training-trim.png"
-          alt="経営研修のイラスト"
+          src="/assets/photos/training.jpg"
+          alt="経営研修（セミナー）の風景"
           label="① 主役"
           title="経営研修（MBAエッセンス）"
           checklist={["経営戦略", "マーケティング", "財務・資金調達", "組織マネジメント"]}
@@ -75,8 +74,8 @@ export function Overview() {
         </BizCard>
         <BizCard
           tone="gold"
-          src="/assets/illust/svc-newbiz-trim.png"
-          alt="新規事業開発のイラスト"
+          src="/assets/photos/newbiz.jpg"
+          alt="資料とデータで事業を分析する様子"
           label="②"
           title="新規事業開発支援"
           checklist={["事業アイデアの構想", "仮説検証", "事業計画づくり", "立ち上げ伴走"]}
@@ -86,8 +85,8 @@ export function Overview() {
         </BizCard>
         <BizCard
           tone="green"
-          src="/assets/illust/svc-regional-trim.png"
-          alt="地方創生事業のイラスト"
+          src="/assets/photos/regional.jpg"
+          alt="チームで連携するビジネスの現場"
           label="③"
           title="地方創生事業支援"
           checklist={["地域資源の事業化", "AI活用", "食農", "地域連携"]}

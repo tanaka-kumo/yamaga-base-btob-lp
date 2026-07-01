@@ -44,7 +44,7 @@ export function BizCard({
         lead ? "border-brand-orange" : "border-border-soft",
       )}
     >
-      {/* 画像バナー（固定アスペクト・高さ固定で巨大化を防ぐ） */}
+      {/* 画像バナー（写真：カード幅いっぱい・固定アスペクト・object-cover） */}
       <div className={cn("relative aspect-[16/10] w-full", t.media)}>
         <Image
           src={src}
@@ -52,7 +52,7 @@ export function BizCard({
           fill
           sizes="(max-width: 768px) 100vw, 360px"
           loading="lazy"
-          className="object-contain p-2"
+          className="object-cover"
         />
       </div>
 
