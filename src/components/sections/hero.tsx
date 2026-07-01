@@ -12,6 +12,7 @@ const BADGES: { Icon: LucideIcon; iconColor: string; tint: string; label: string
 // SECTION 01：HERO。背景映像は維持。メイン見出しは「白枠×黒文字」で映像の上でも高コントラスト。
 export function Hero() {
   return (
+    <>
     <header id="top" className="relative bg-paper">
       {/* 背景映像＋見出しオーバーレイ（モバイル縦長／デスクトップ横長バナー） */}
       <div className="relative aspect-[3/3.4] w-full overflow-hidden bg-[#1c1b19] md:aspect-auto md:h-[clamp(420px,56vh,600px)]">
@@ -80,10 +81,13 @@ export function Hero() {
             ))}
           </div>
 
-          {/* デュアルCTA：視察予約（オレンジ）＋ 資料請求（アウトライン） */}
+          {/* デュアルCTA：無料相談を予約（オレンジ）＋ 資料請求（アウトライン） */}
+          {/* 予約先URL＝{{要確認:無料相談の予約先URL}}（確定まで既存問い合わせ導線） */}
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <div className="sm:flex-1">
-              <CtaButton location="hero_reserve">視察を予約する</CtaButton>
+              <CtaButton location="hero_reserve" dataCta="free-consult">
+                無料相談を予約する
+              </CtaButton>
             </div>
             <div className="sm:flex-1">
               <CtaButton location="hero_document" variant="outline">
@@ -91,8 +95,26 @@ export function Hero() {
               </CtaButton>
             </div>
           </div>
+          <p className="mt-2.5 text-center text-[12px] font-medium text-ink-soft sm:text-left">
+            30分・オンライン可・無料
+          </p>
         </div>
       </div>
     </header>
+
+      {/* 「行動がゴール」宣言バンド（ヒーロー直下・淡tint・中央） */}
+      <section className="border-y border-border-soft bg-[#eef4f7] px-[22px] py-9 text-center md:py-12">
+        <div className="mx-auto max-w-[760px]">
+          <p className="text-[19px] font-bold leading-[1.6] text-ink md:text-[24px]">
+            ここでのゴールは、「学ぶこと」ではありません。
+            <br />
+            「行動を起こすこと」です。
+          </p>
+          <p className="mx-auto mt-3 max-w-[560px] text-[13.5px] leading-[1.9] text-ink-soft">
+            研修で終わらせない。動き出すところまでを、私たちの役割にしています。
+          </p>
+        </div>
+      </section>
+    </>
   );
 }

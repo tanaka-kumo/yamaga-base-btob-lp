@@ -15,8 +15,11 @@ export function FinalCta() {
           研修も、新規事業も、合宿も。まずは御社の課題をお聞かせください。最適な組み合わせを一緒に設計します。
         </p>
         <div className="mt-[18px]">
-          <CtaButton location="final">無料で相談する</CtaButton>
+          <CtaButton location="final" dataCta="free-consult">無料相談を予約する</CtaButton>
         </div>
+        <p className="mt-2.5 text-center text-[12px] font-medium text-white/70">
+          30分・オンライン可・無料
+        </p>
       </CtaPanel>
     </Section>
   );

@@ -62,8 +62,8 @@ export function StickyChrome() {
                 {it.label}
               </a>
             ))}
-            <CtaButton location="nav_reserve" size="sm" chevron={false} className="min-h-10 px-5 text-sm">
-              視察を予約する
+            <CtaButton location="nav_reserve" dataCta="free-consult" size="sm" chevron={false} className="min-h-10 px-5 text-sm">
+              無料相談を予約する
             </CtaButton>
           </nav>
 
@@ -90,7 +90,7 @@ export function StickyChrome() {
                     </SheetClose>
                   ))}
                   <div className="mt-3 flex flex-col gap-2 px-1">
-                    <CtaButton location="nav_reserve">視察を予約する</CtaButton>
+                    <CtaButton location="nav_drawer_reserve" dataCta="free-consult">無料相談を予約する</CtaButton>
                     <CtaButton location="nav_document" variant="outline">
                       資料を請求する
                     </CtaButton>
@@ -108,10 +108,13 @@ export function StickyChrome() {
           atBottom ? "pointer-events-none translate-y-full opacity-0" : "translate-y-0 opacity-100"
         }`}
       >
+        <p className="mx-auto mb-1 max-w-[480px] text-center text-[10px] font-medium text-ink-soft">
+          30分・オンライン可・無料
+        </p>
         <div className="mx-auto flex max-w-[480px] gap-2">
           <div className="flex-[1.4]">
-            <CtaButton location="sticky_reserve" chevron={false} className="px-3 text-[14px]">
-              視察を予約する
+            <CtaButton location="sticky_reserve" dataCta="free-consult" chevron={false} className="px-3 text-[14px]">
+              無料相談を予約する
             </CtaButton>
           </div>
           <div className="flex-1">

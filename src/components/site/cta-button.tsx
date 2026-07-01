@@ -28,6 +28,7 @@ export function CtaButton({
   variant = "gold",
   size = "block",
   chevron = true,
+  dataCta,
   className,
 }: {
   location: string;
@@ -36,6 +37,8 @@ export function CtaButton({
   variant?: Variant;
   size?: Size;
   chevron?: boolean;
+  /** data-cta 属性の上書き（GA計測フック用）。既定は location */
+  dataCta?: string;
   className?: string;
 }) {
   const isExternal = href.startsWith("http");
@@ -47,7 +50,7 @@ export function CtaButton({
   return (
     <a
       href={href}
-      data-cta={location}
+      data-cta={dataCta ?? location}
       data-event="cta_click"
       onClick={() => trackCta(location, label)}
       {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}

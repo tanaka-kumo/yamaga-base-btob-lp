@@ -20,7 +20,7 @@ export function Consult() {
           説明会の日程を待たず、御社の課題に合わせて1対1で。オンラインで気軽にご相談いただけます。
         </p>
         <div className="mt-[18px]">
-          <CtaButton location="consult_main">オンライン相談を予約する</CtaButton>
+          <CtaButton location="consult_main" dataCta="free-consult">無料相談を予約する</CtaButton>
         </div>
         <p className="mt-3.5 text-[11px] leading-[1.6] text-white/55">
           ※ お問い合わせ窓口は準備中のため、現在は既存サイトの問い合わせ先へご案内します。
